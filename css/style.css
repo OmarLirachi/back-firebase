@@ -1,0 +1,47 @@
+*{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color: rgb(83, 81, 81);
+}
+
+.main{
+    margin: 5%;
+    margin-top: 15%;
+}
+
+.tarjeta-login{
+    width: 30%;
+    background-color: rgb(49, 78, 172);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.title{
+    color: aliceblue;
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-block-end: 50px;
+}
+
+.rec{
+    width: 50%;
+    height: 20px;
+    margin: 0 auto;
+    margin-block-end: 30px;
+    border: 0;
+    border-radius: 5px;
+    outline: none;
+}
+
+.ref-reg{
+    background-color: cadetblue;
+}
+
+.texto{
+    margin-left: 25%;
+}
