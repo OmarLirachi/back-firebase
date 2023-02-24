@@ -17,6 +17,8 @@ body{
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
 }
 
@@ -39,9 +41,26 @@ body{
 }
 
 .ref-reg{
+    width: 100%;
     background-color: cadetblue;
 }
 
 .texto{
     margin-left: 25%;
+}
+
+#btn{
+    margin:2%; 
+    padding: 2%;
+    width: 20%;
+    cursor: pointer;
+    background-color: #3dbbec;
+    border-style: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+#btn:hover{
+    background-color: rgb(21, 21, 89);
+    color: white;
+    transition: 0.5s;
 }

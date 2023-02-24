@@ -2,6 +2,7 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 const { initializeApp } = require('firebase/app')
 const { getFirestore, collection, getDoc, doc, setDoc, getDocs} = require('firebase/firestore')
+const cors = require('cors')
 require('dotenv/config')
 
 //config de firebase
@@ -21,7 +22,13 @@ const firebaseConfig = {
   //Iniciar el servidor
   const app = express()
 
+  const cors0ptions = {
+    "origin": "*",
+    "optionSuccessStatus": 200
+  }
+
   app.use(express.json())
+  app.use(cors(cors0ptions))
 
 //ruta para peticiones
 //ruta registro
