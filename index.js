@@ -79,6 +79,7 @@ app.get('/usuarios', async (req, res) => {
   data.push(doc.data())
  })
  res.json({
+  message: "Usuarios",
   'alert': 'success',
   data
  })
