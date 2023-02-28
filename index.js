@@ -60,6 +60,7 @@ app.post('/registro', (req, res) =>{
             //guardar en la bd
             setDoc(doc(users, email), req.body).then( reg => {
               res.json({
+                message: 'Correcto',
                 'alert':'succes',
                 'data': reg
               })
@@ -118,6 +119,53 @@ app.post('/login', (req, res) => {
       })
     }
   })
+})
+
+app.post('/delete', (req, res) => {
+  let {email} = req.body
+
+  deleteDoc(doc(collection(db, 'users'), email))
+  .then((response) => {
+    res.json({
+      'alert': 'success'
+    })
+  })
+  .catch((error) => {
+    res.json({
+      'alert': error
+    })
+  })
+})
+
+app.post('/update', (req, res) => {
+  const {id ,name, lastname, number } = req.body
+
+  //validaciones de los datos
+  if(name.length < 3) {
+    res.json({'alert': 'nombre requiere min 3 caracteres'})
+  } else if(lastname.length < 3) {
+    res.json({'alert': 'Apelllido requiere min 3 caracteres'})
+  }else if(!Number(number) || number.length < 10) {
+    res.json({'alert': 'debes escribir 10 digitos en el numero'})
+  } else { 
+    db.collection('users').doc(id)
+    const updateData = {
+      name,
+      lastname,
+      number
+    }
+    updateDoc(doc(db, 'users'), updateData, id)
+  .then((response) => {
+    res.json({
+      'alert': 'success'
+    })
+  })
+  .catch((error) => {
+    res.json({
+      'alert': error
+    })
+  })
+  }
 })
 
   const PORT = process.env.PORT || 19000
