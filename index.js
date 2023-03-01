@@ -1,7 +1,7 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
 const { initializeApp } = require('firebase/app')
-const { getFirestore, collection, getDoc, doc, setDoc, getDocs} = require('firebase/firestore')
+const { getFirestore, collection, getDoc, doc, setDoc, getDocs, deleteDoc, updateDoc} = require('firebase/firestore')
 const cors = require('cors')
 require('dotenv/config')
 
@@ -138,7 +138,7 @@ app.post('/delete', (req, res) => {
 })
 
 app.post('/update', (req, res) => {
-  const {id ,name, lastname, number } = req.body
+  const {name, lastname, email, number } = req.body
 
   //validaciones de los datos
   if(name.length < 3) {
@@ -148,13 +148,14 @@ app.post('/update', (req, res) => {
   }else if(!Number(number) || number.length < 10) {
     res.json({'alert': 'debes escribir 10 digitos en el numero'})
   } else { 
-    db.collection('users').doc(id)
+    // db.collection('users').doc(email)
+    const usuarioUpd = collection(db, 'users')
     const updateData = {
       name,
       lastname,
       number
     }
-    updateDoc(doc(db, 'users'), updateData, id)
+    updateDoc(doc(usuarioUpd, email), updateData, email)
   .then((response) => {
     res.json({
       'alert': 'success'
